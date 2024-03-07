@@ -90,54 +90,132 @@
 
 //! Traccia 2
 
-// class Animal
-// {
-//     public function __construct()
-//     {
-//     }
-// }
+class Vertebrate
+{
+    public function __construct()
+    {
+        $this->type();
+    }
 
-// class Vertebrate extends Animal
-// {
-//     protected function printSpecialization()
-//     {
-//         echo "Sono un animale Vertebrato\n";
-//     }
-// }
+    protected function type()
+    {
+        echo "Sono un animale Vertebrato \n";
+    }
+}
 
-// class ColdBlooded extends Animal
-// {
-//     protected function printSpecialization()
-//     {
-//         echo "Sono un animale a Sangue Freddo\n";
-//     }
-// }
+class WarmBlooded extends Vertebrate
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->bloodType();
+    }
 
-// class WarmBlooded extends Animal
-// {
-//     protected function printSpecialization()
-//     {
-//         echo "Sono un animale a Sangue Caldo\n";
-//     }
-// }
+    protected function bloodType()
+    {
+        echo "Sono un animale a Sangue Caldo \n";
+    }
+}
 
-// class Fish extends Vertebrate
-// {
-//     public function __construct()
-//     {
-//         parent::__construct();
-//         $this->printSpecialization();
-//         echo "Sono un animale a Sangue Freddo\n";
-//         $this->swim();
-//     }
+class Mammal extends WarmBlooded
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->hunt();
+    }
 
-//     protected function swim()
-//     {
-//         echo "Splash!\n";
-//     }
-// }
+    protected function hunt()
+    {
+        echo "Vado a caccia \n";
+    }
+}
 
-// $magikarp = new Fish();
+class Bird extends WarmBlooded
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->fly();
+    }
+
+    protected function fly()
+    {
+        echo "Volo \n";
+    }
+}
+
+class ColdBlooded extends Vertebrate
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->bloodType();
+    }
+
+    protected function bloodType()
+    {
+        echo "Sono un animale a Sangue Freddo \n";
+    }
+}
+
+class Fish extends ColdBlooded
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->moves();
+    }
+
+    protected function moves()
+    {
+        echo "Splash \n";
+    }
+}
+
+class Reptile extends ColdBlooded
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->crawl();
+    }
+
+    protected function crawl()
+    {
+        echo "Striscio \n";
+    }
+}
+
+class Amphibian extends ColdBlooded
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->jump();
+    }
+
+    protected function jump()
+    {
+        echo "Salto \n";
+    }
+}
+
+
+
+$magikarp = new Fish();
+
+$bird = new Bird();
+
+$lion = new Mammal();
+
+$frog = new Amphibian();
+
+$snake = new Reptile();
+    
+
+
+
 
 
 
@@ -152,59 +230,59 @@
 
 //! Traccia 3
 
-class Car {
-    private $num_telaio;
+// class Car {
+//     private $num_telaio;
 
-    public function __construct($num_telaio) {
-        $this->num_telaio = $num_telaio;
-    }
+//     public function __construct($num_telaio) {
+//         $this->num_telaio = $num_telaio;
+//     }
 
-    public function getNumTelaio() {
-        return $this->num_telaio;
-    }
-}
+//     public function getNumTelaio() {
+//         return $this->num_telaio;
+//     }
+// }
 
-class Fiat extends Car {
-    protected $name;
-    protected $license;
+// class Fiat extends Car {
+//     protected $name;
+//     protected $license;
    
 
-    public function __construct($num_telaio, $license, $name) {
-        parent::__construct($num_telaio);
-        $this->license = $license;
-        $this->name = $name;
-    }
+//     public function __construct($num_telaio, $license, $name) {
+//         parent::__construct($num_telaio);
+//         $this->license = $license;
+//         $this->name = $name;
+//     }
 
-    public function printCarDetails() {
-        echo "La mia macchina e' $this->name, con targa $this->license e numero di Telaio " . $this->getNumTelaio() . "\n";
-    }
-}
+//     public function printCarDetails() {
+//         echo "La mia macchina e' $this->name, con targa $this->license e numero di Telaio " . $this->getNumTelaio() . "\n";
+//     }
+// }
 
-class Porsche extends Car {
-    protected $name;
-    protected $license;
+// class Porsche extends Car {
+//     protected $name;
+//     protected $license;
    
 
-    public function __construct($num_telaio, $license, $name) {
-        parent::__construct($num_telaio);
-        $this->license = $license;
-        $this->name = $name;
-    }
+//     public function __construct($num_telaio, $license, $name) {
+//         parent::__construct($num_telaio);
+//         $this->license = $license;
+//         $this->name = $name;
+//     }
 
-    public function printCarDetails() {
-        echo "La mia auto è una Porsche, con targa $this->license e numero di telaio " . $this->getNumTelaio() . "\n";
-    }
-}
-
-
-$fiat = new Fiat("1234", "ND 123 OJ", "Fiat");
-$fiat->printCarDetails();
+//     public function printCarDetails() {
+//         echo "La mia auto è una Porsche, con targa $this->license e numero di telaio " . $this->getNumTelaio() . "\n";
+//     }
+// }
 
 
-$porsche = new Porsche("5678", "DG 966 PK", "Porsche");
-$porsche->printCarDetails();
+// $fiat = new Fiat("1234", "ND 123 OJ", "Fiat");
+// $fiat->printCarDetails();
 
 
-var_dump($fiat);
-var_dump($porsche);
+// $porsche = new Porsche("5678", "DG 966 PK", "Porsche");
+// $porsche->printCarDetails();
+
+
+// var_dump($fiat);
+// var_dump($porsche);
 
